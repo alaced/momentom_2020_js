@@ -7,23 +7,45 @@
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
-    <div class="js-clock">
-      <h1 class="js-title">00:00</h1>
-    </div>
-    <form class="js-greetingForm form">
-      <input
-        type="text"
-        placeholder="What is your name?"
-        class="js-form__name"
-      />
-    </form>
-    <h4 class="js-greetings greetings"></h4>
-    <form class="js-toDoForm">
-      <input type="text" placeholder="Write a to do" class="js-form__todo" />
-    </form>
-    <ul class="js-toDoList"></ul>
+    <main>
+      <div class="js-clock clock">
+        <h1 class="js-title">00:00</h1>
+      </div>
+      <div class="name">
+        <form class="js-greetingForm greeting-form">
+          <input
+            type="text"
+            placeholder="What is your name?"
+            class="js-form__name name-input"
+          />
+        </form>
+        <h4 class="js-greetings greetings"></h4>
+      </div>
+      <div class="todo">
+        <form class="js-toDoForm todo-form">
+          <input
+            type="text"
+            placeholder="What is your main focus?"
+            class="js-form__todo todo-input"
+          />
+        </form>
+        <div class="containier-toDoList">
+          <div class="js-toDoList in-progress">
+            <div class="progress-column">In progress</div>
+          </div>
+          <div class="js-doneList done">
+            <div class="done-column">Done</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/841cfaa0da.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="clock.js"></script>
     <script src="greeting.js"></script>
     <script src="todo.js"></script>
+    <script src="bg.js"></script>
   </body>
 </html>
