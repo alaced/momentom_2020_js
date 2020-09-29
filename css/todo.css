@@ -1,0 +1,90 @@
+.containier-toDoList {
+  display: flex;
+  justify-content: space-around;
+}
+
+.todo {
+  width: 90%;
+  margin-top: 40px;
+}
+
+.todo-form {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.todo_item {
+  display: flex;
+  align-items: center;
+}
+
+.todo_list {
+  display: flex;
+  font-size: 18px;
+}
+
+.todo-input {
+  border: none;
+  border-radius: 15px;
+  background-color: inherit;
+  /* border-bottom: 1px solid black; */
+  width: 100%;
+  height: 40px;
+  padding: 3px 3px 1px 10px;
+  min-width: 230px;
+  transition: all 0.3s ease;
+}
+
+.todo-input::placeholder {
+  font-size: 20px;
+  color: white;
+}
+
+.todo-input:before {
+  height: 0%;
+  width: 2px;
+}
+.todo-input:hover {
+  box-shadow: 2px 2px 4px 0 rgba(255, 255, 255, 0.5),
+    -2px -2px 3px 0 rgba(116, 125, 136, 0.2),
+    inset -2px -2px 3px 0 rgba(255, 255, 255, 0.5),
+    inset 2px 2px 3px 0 rgba(116, 125, 136, 0.3);
+}
+
+.todo-input:focus {
+  box-shadow: 2px 2px 4px 0 rgba(255, 255, 255, 0.5),
+    -2px -2px 3px 0 rgba(116, 125, 136, 0.2),
+    inset -2px -2px 3px 0 rgba(255, 255, 255, 0.5),
+    inset 2px 2px 3px 0 rgba(116, 125, 136, 0.3);
+}
+
+.in-progress {
+  padding: 5px;
+  width: 50%;
+}
+.progress-column {
+  margin-bottom: 20px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.done {
+  padding: 5px;
+  width: 50%;
+}
+
+.done-column {
+  margin-bottom: 20px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.delBtn {
+  border: none;
+  align-items: center;
+  background-color: inherit;
+  font-size: 20px;
+}

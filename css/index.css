@@ -1,5 +1,6 @@
 @import "reset.css";
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Epilogue:wght@200;300;400;500;600;700;800&display=swap");
+@import "todo.css";
 
 * {
   box-sizing: border-box;
@@ -14,6 +15,8 @@ body {
 button {
   background: inherit;
   border: none;
+  font-size: 23px;
+  color: darkred;
 }
 
 .name-input,
@@ -77,6 +80,12 @@ main {
   justify-content: center;
 }
 
+.name {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
 .name-input {
   background-color: inherit;
   border: none;
@@ -89,6 +98,11 @@ main {
   font-size: 20px;
 }
 
+.name-input:hover {
+  box-shadow: -4px -4px 10px 0px #fff9, -2px -2px 3px 0px #fff9,
+    4px 4px 10px 0px #0002, 2px 2px 3px 0px #0001;
+}
+
 .greetings {
   padding: 20px;
   font-size: 2rem;
@@ -98,82 +112,16 @@ main {
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.containier-toDoList {
-  display: flex;
-  justify-content: space-around;
+.weather-map {
+  color: whitesmoke;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+}
+.weather {
+  font-size: 27px;
 }
 
-.todo {
-  width: 90%;
-  margin-top: 20px;
-}
-
-.name {
-  width: 80%;
-  display: flex;
-  justify-content: center;
-}
-
-.todo-form {
-  padding: 20px 20px 20px 20px;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.in-progress {
-  padding: 5px;
-  width: 50%;
-}
-.progress-column {
-  margin-bottom: 20px;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.done {
-  padding: 5px;
-  width: 50%;
-}
-
-.done-column {
-  margin-bottom: 20px;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.delBtn {
-  border: none;
-  align-items: center;
-  background-color: inherit;
-  font-size: 20px;
-}
-
-.todo_item {
-  display: flex;
-  align-items: center;
-}
-
-.todo_list {
-  display: flex;
-  font-size: 18px;
-}
-
-.todo-input {
-  border: none;
-  background-color: inherit;
-  border-bottom: 1px solid black;
-  width: 100%;
-  padding: 3px 3px 1px 3px;
-  min-width: 230px;
-}
-
-.todo-input::placeholder {
-  font-size: 20px;
-  color: white;
-}
-
-.todo-input:focus {
-  border: none;
+.location {
+  font-size: 14px;
 }
