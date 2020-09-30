@@ -12,15 +12,19 @@ let dones = [];
 function returnToDos(event) {
   const btn = event.target;
   const div = btn.parentNode;
+  const delBtn = div.lastChild;
   toDoList.appendChild(div);
   btn.removeEventListener("click", returnToDos);
   btn.addEventListener("click", doneToDo);
   btn.innerText = "✓";
-  const text = div.querySelector("div").innerHTML;
-  let newId = parseInt(div.id);
-  let toDoObj = {
+  delBtn.innerText = "✖️";
+  delBtn.removeEventListener("click", deleteDone);
+  delBtn.addEventListener("click", deleteToDo);
+  let text = div.querySelector("div").innerHTML;
+  let id = parseInt(div.id);
+  const toDoObj = {
     text: text,
-    id: newId,
+    id: id,
   };
   toDos.push(toDoObj);
 
@@ -34,11 +38,13 @@ function returnToDos(event) {
 function doneToDo(event) {
   const btn = event.target;
   const div = btn.parentNode;
-  const delBtn = div.appendChild;
+  const delBtn = div.lastChild;
   let newId = parseInt(div.id);
   doneList.appendChild(div);
   btn.innerText = "↺";
   btn.addEventListener("click", returnToDos);
+  delBtn.removeEventListener("click", deleteToDo);
+  delBtn.addEventListener("click", deleteDone);
   let text = div.querySelector("div").innerText;
   const doneObj = {
     text: text,
@@ -88,12 +94,15 @@ function paintDone(text) {
 
   delBtn.innerText = "✖️";
   delBtn.addEventListener("click", deleteDone);
+  returnBtn.addEventListener("click", returnToDos);
   listDiv.appendChild(returnBtn);
   listDiv.appendChild(div);
   listDiv.appendChild(delBtn);
+  listDiv.setAttribute("class", "todo_list");
   div.innerHTML = text;
-  div.id = newId;
+  listDiv.id = newId;
   returnBtn.innerText = "↺";
+  doneList.appendChild(listDiv);
   const doneObj = {
     text: text,
     id: newId,
