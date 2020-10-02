@@ -1,28 +1,31 @@
 .containier-toDoList {
-  display: flex;
   justify-content: space-around;
 }
 
 .todo {
-  width: 90%;
+  width: 100%;
   margin-top: 40px;
 }
 
 .todo-form {
   padding: 10px;
-  width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .todo_item {
   display: flex;
   align-items: center;
+  font-size: 1.5rem;
 }
 
 .todo_list {
   display: flex;
-  font-size: 18px;
+  font-size: 2rem;
   align-items: center;
+  text-align: center;
+  padding: 0.2rem;
 }
 
 .todo-input {
@@ -30,16 +33,18 @@
   border-radius: 15px;
   background-color: inherit;
   /* border-bottom: 1px solid black; */
-  width: 100%;
+  width: 80%;
   height: 40px;
-  padding: 3px 3px 1px 10px;
+  padding: 3px 5px 3px 15px;
   min-width: 230px;
   transition: all 0.3s ease;
+  line-height: 1.4rem;
 }
 
 .todo-input::placeholder {
-  font-size: 20px;
+  font-size: 1.3rem;
   color: white;
+  padding: 3px 40px 1px 40px;
 }
 
 .todo-input:before {
@@ -54,6 +59,8 @@
 }
 
 .todo-input:focus {
+  color: white;
+  font-size: 1.3rem;
   box-shadow: 2px 2px 4px 0 rgba(255, 255, 255, 0.5),
     -2px -2px 3px 0 rgba(116, 125, 136, 0.2),
     inset -2px -2px 3px 0 rgba(255, 255, 255, 0.5),
@@ -61,31 +68,30 @@
 }
 
 .in-progress {
-  padding: 5px;
+  padding: 10px;
   width: 50%;
+  box-shadow: 7px 7px 16px -6px rgba(107, 102, 107, 1);
 }
 .progress-column {
   margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 1.2rem;
   display: flex;
   justify-content: center;
+  padding: 5px;
+  border-bottom: 1px solid rgb(202, 201, 201);
 }
 
 .done {
-  padding: 5px;
+  padding: 10px;
   width: 50%;
+  box-shadow: 7px 7px 16px -6px rgba(107, 102, 107, 1);
 }
 
 .done-column {
   margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 1.2rem;
   display: flex;
   justify-content: center;
-}
-
-.delBtn {
-  border: none;
-  align-items: center;
-  background-color: inherit;
-  font-size: 20px;
+  padding: 5px;
+  border-bottom: 1px solid rgb(202, 201, 201);
 }
