@@ -1,10 +1,12 @@
 const toDoForm = document.querySelector(".js-toDoForm"),
   toDoInput = toDoForm.querySelector(".js-form__todo"),
   toDoList = document.querySelector(".js-toDoList"),
-  doneList = document.querySelector(".js-doneList");
+  doneList = document.querySelector(".js-doneList"),
+  toDoContainer = document.querySelector(".containier-toDoList");
 
 const TODO_LS = "toDos";
 const DONE_LS = "dones";
+const SHOWING_FLEX = "showing-flex";
 
 let toDos = [];
 let dones = [];
@@ -14,12 +16,15 @@ function returnToDos(event) {
   const div = btn.parentNode;
   const delBtn = div.lastChild;
   toDoList.appendChild(div);
+
+  btn.innerText = "✓";
   btn.removeEventListener("click", returnToDos);
   btn.addEventListener("click", doneToDo);
-  btn.innerText = "✓";
+
   delBtn.innerText = "✖️";
   delBtn.removeEventListener("click", deleteDone);
   delBtn.addEventListener("click", deleteToDo);
+
   let text = div.querySelector("div").innerHTML;
   let id = parseInt(div.id);
   const toDoObj = {
@@ -91,17 +96,20 @@ function paintDone(text) {
   const delBtn = document.createElement("button");
   const div = document.createElement("div");
   const newId = dones.length + 1;
-
+  toDoContainer.classList.add(SHOWING_FLEX);
   delBtn.innerText = "✖️";
   delBtn.addEventListener("click", deleteDone);
+  delBtn.setAttribute("class", "del-btn");
   returnBtn.addEventListener("click", returnToDos);
   listDiv.appendChild(returnBtn);
   listDiv.appendChild(div);
   listDiv.appendChild(delBtn);
   listDiv.setAttribute("class", "todo_list");
+  div.setAttribute("class", "todo_item");
   div.innerHTML = text;
   listDiv.id = newId;
   returnBtn.innerText = "↺";
+  returnBtn.setAttribute("class", "return-btn");
   doneList.appendChild(listDiv);
   const doneObj = {
     text: text,
@@ -109,6 +117,7 @@ function paintDone(text) {
   };
   dones.push(doneObj);
   saveToDos();
+  empty();
 }
 
 function paintToDo(text) {
@@ -117,11 +126,13 @@ function paintToDo(text) {
   const div = document.createElement("div");
   const newId = toDos.length + 1;
   const checkBtn = document.createElement("button");
+  toDoContainer.classList.add(SHOWING_FLEX);
   checkBtn.innerText = "✓";
   checkBtn.addEventListener("click", doneToDo);
+  checkBtn.setAttribute("class", "check-btn");
   delBtn.innerText = `✖️`;
   delBtn.addEventListener("click", deleteToDo);
-  delBtn.setAttribute("class", "delBtn");
+  delBtn.setAttribute("class", "del-btn");
   div.setAttribute("class", "todo_item");
   div.innerText = text;
   listDiv.appendChild(checkBtn);
@@ -136,10 +147,12 @@ function paintToDo(text) {
   };
   toDos.push(toDoObj);
   saveToDos();
+  empty();
 }
 
 function handleSubmit(event) {
   event.preventDefault();
+  if (toDoInput.value === "" || toDoInput.value === " ") return false;
   const currentValue = toDoInput.value;
   paintToDo(currentValue);
   toDoInput.value = "";
@@ -162,9 +175,16 @@ function loadToDos() {
   }
 }
 
+function empty() {
+  if (localStorage.getItem(TODO_LS) && localStorage.getItem(DONE_LS) === null) {
+    toDoContainer.classList.remove(SHOWING_FLEX);
+  }
+}
+
 function init() {
   loadToDos();
   toDoForm.addEventListener("submit", handleSubmit);
+  empty();
 }
 
 init();
