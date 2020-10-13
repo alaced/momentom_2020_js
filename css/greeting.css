@@ -1,0 +1,57 @@
+.name {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.greeting-form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.name-input {
+  background-color: inherit;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  line-height: 1.95rem;
+  text-align: center;
+  align-items: center;
+}
+
+.name-input[type="text"] {
+  font-size: 1.6rem;
+}
+
+.name-input::placeholder {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.name-input:hover {
+  box-shadow: -4px -4px 10px 0px #fff9, -2px -2px 3px 0px #fff9,
+    4px 4px 10px 0px #0002, 2px 2px 3px 0px #0001;
+}
+
+.name-input:focus {
+  color: white;
+  box-shadow: -4px -4px 10px 0px #fff9, -2px -2px 3px 0px #fff9,
+    4px 4px 10px 0px #0002, 2px 2px 3px 0px #0001;
+}
+
+.greetings {
+  padding: 10px;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  text-shadow: 1px 5px rgba(0, 0, 0, 0.2);
+}
