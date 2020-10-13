@@ -12,142 +12,113 @@ let toDos = [];
 let dones = [];
 
 function returnToDos(event) {
-  const btn = event.target;
-  const div = btn.parentNode;
-  const delBtn = div.lastChild;
-  toDoList.appendChild(div);
-
-  btn.innerText = "✓";
-  btn.removeEventListener("click", returnToDos);
-  btn.addEventListener("click", doneToDo);
-
-  delBtn.innerText = "✖️";
-  delBtn.removeEventListener("click", deleteDone);
-  delBtn.addEventListener("click", deleteToDo);
-
-  let text = div.querySelector("div").innerHTML;
-  let id = parseInt(div.id);
-  const toDoObj = {
-    text: text,
-    id: id,
-  };
-  toDos.push(toDoObj);
-
+  const returnBtn = event.target;
+  const div = returnBtn.parentNode;
+  doneList.removeChild(div);
+  let newId = parseInt(div.id);
   const moveDones = dones.filter(function (done) {
-    return done.id !== parseInt(div.id);
+    return done.id !== newId;
   });
   dones = moveDones;
-  saveToDos();
+  saveDones(dones);
+  paintToDo(div.innerText);
 }
 
 function doneToDo(event) {
-  const btn = event.target;
-  const div = btn.parentNode;
-  const delBtn = div.lastChild;
+  const checkBtn = event.target;
+  const div = checkBtn.parentNode;
   let newId = parseInt(div.id);
-  doneList.appendChild(div);
-  btn.innerText = "↺";
-  btn.addEventListener("click", returnToDos);
-  delBtn.removeEventListener("click", deleteToDo);
-  delBtn.addEventListener("click", deleteDone);
-  let text = div.querySelector("div").innerText;
-  const doneObj = {
-    text: text,
-    id: newId,
-  };
-  dones.push(doneObj);
+  toDoList.removeChild(div);
   const moveToDos = toDos.filter(function (toDo) {
-    return toDo.id !== parseInt(div.id);
+    return toDo.id !== newId;
   });
   toDos = moveToDos;
-  saveToDos();
+  saveToDos(toDos);
+  paintDone(div.innerText);
 }
 
 function deleteDone(event) {
-  const btn = event.target;
-  const div = btn.parentNode;
+  const delBtn = event.target;
+  const div = delBtn.parentNode;
   doneList.removeChild(div);
   const cleanDone = dones.filter(function (done) {
     return done.id !== parseInt(div.id);
   });
   dones = cleanDone;
-  saveToDos();
+  saveDones(dones);
 }
 
 function deleteToDo(event) {
-  const btn = event.target;
-  const div = btn.parentNode;
+  const delBtn = event.target;
+  const div = delBtn.parentNode;
   toDoList.removeChild(div);
   const cleanToDos = toDos.filter(function (toDo) {
     return toDo.id !== parseInt(div.id);
   });
   toDos = cleanToDos;
-  saveToDos();
+  saveToDos(toDos);
 }
 
-function saveToDos() {
-  localStorage.setItem(TODO_LS, JSON.stringify(toDos));
-  localStorage.setItem(DONE_LS, JSON.stringify(dones));
+function saveToDos(todo) {
+  localStorage.setItem(TODO_LS, JSON.stringify(todo));
+}
+
+function saveDones(done) {
+  localStorage.setItem(DONE_LS, JSON.stringify(done));
 }
 
 function paintDone(text) {
   const listDiv = document.createElement("div");
   const returnBtn = document.createElement("button");
-  const delBtn = document.createElement("button");
   const div = document.createElement("div");
+  const delBtn = document.createElement("button");
   const newId = dones.length + 1;
   toDoContainer.classList.add(SHOWING_FLEX);
-  delBtn.innerText = "✖️";
-  delBtn.addEventListener("click", deleteDone);
-  delBtn.setAttribute("class", "del-btn");
   returnBtn.addEventListener("click", returnToDos);
+  returnBtn.classList.add("fas", "fa-undo-alt");
+  div.classList.add("todo_item");
+  div.innerHTML = text;
+  delBtn.classList.add("fas", "fa-times");
+  delBtn.addEventListener("click", deleteDone);
   listDiv.appendChild(returnBtn);
   listDiv.appendChild(div);
   listDiv.appendChild(delBtn);
-  listDiv.setAttribute("class", "todo_list");
-  div.setAttribute("class", "todo_item");
-  div.innerHTML = text;
+  listDiv.classList.add("todo_list");
   listDiv.id = newId;
-  returnBtn.innerText = "↺";
-  returnBtn.setAttribute("class", "return-btn");
   doneList.appendChild(listDiv);
   const doneObj = {
-    text: text,
+    text,
     id: newId,
   };
   dones.push(doneObj);
-  saveToDos();
-  empty();
+  saveDones(dones);
 }
 
 function paintToDo(text) {
   const listDiv = document.createElement("div");
-  const delBtn = document.createElement("button");
-  const div = document.createElement("div");
-  const newId = toDos.length + 1;
   const checkBtn = document.createElement("button");
+  const div = document.createElement("div");
+  const delBtn = document.createElement("button");
+  const newId = toDos.length + 1;
   toDoContainer.classList.add(SHOWING_FLEX);
-  checkBtn.innerText = "✓";
+  checkBtn.classList.add("fas", "fa-check");
   checkBtn.addEventListener("click", doneToDo);
-  checkBtn.setAttribute("class", "check-btn");
-  delBtn.innerText = `✖️`;
-  delBtn.addEventListener("click", deleteToDo);
-  delBtn.setAttribute("class", "del-btn");
-  div.setAttribute("class", "todo_item");
+  div.classList.add("todo_item");
   div.innerText = text;
+  delBtn.classList.add("fas", "fa-times");
+  delBtn.addEventListener("click", deleteToDo);
+  listDiv.classList.add("todo_list");
   listDiv.appendChild(checkBtn);
   listDiv.appendChild(div);
   listDiv.appendChild(delBtn);
-  listDiv.setAttribute("class", "todo_list");
   listDiv.id = newId;
   toDoList.appendChild(listDiv);
   const toDoObj = {
-    text: text,
+    text,
     id: newId,
   };
   toDos.push(toDoObj);
-  saveToDos();
-  empty();
+  saveToDos(toDos);
 }
 
 function handleSubmit(event) {
@@ -175,16 +146,9 @@ function loadToDos() {
   }
 }
 
-function empty() {
-  if (localStorage.getItem(TODO_LS) && localStorage.getItem(DONE_LS) === null) {
-    toDoContainer.classList.remove(SHOWING_FLEX);
-  }
-}
-
 function init() {
   loadToDos();
   toDoForm.addEventListener("submit", handleSubmit);
-  empty();
 }
 
 init();

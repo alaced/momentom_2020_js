@@ -1,5 +1,6 @@
 @import "reset.css";
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Epilogue:wght@200;300;400;500;600;700;800&display=swap");
+@import url("greeting.css");
 @import "todo.css";
 
 * {
@@ -16,18 +17,21 @@ body {
 button {
   background: inherit;
   border: none;
-  font-size: 20px;
-  color: darkred;
+  font-size: 1.2rem;
+  color: rgba(139, 0, 0, 0.85);
+  cursor: pointer;
 }
 
 button:focus {
   border: none;
+  outline: none;
 }
 
 .name-input,
 .greetings,
 .greeting-form,
-.containier-toDoList {
+.containier-toDoList,
+.todo {
   display: none;
 }
 
@@ -55,16 +59,16 @@ button:focus {
   width: 100%;
   height: 100%;
   z-index: -1;
-  animation: fadeIn 1s linear;
+  animation: fadeIn 0.4s linear;
 }
 
 main {
   min-width: 500px;
   color: white;
-  padding: 20px 20px 50px 20px;
-  /* border: 1px solid black;
-  border-radius: 40px; */
-  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px 20px 30px 20px;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   width: 45%;
   margin: auto;
   display: flex;
@@ -83,55 +87,7 @@ main {
   font-family: "Courier New", Courier, monospace;
   font-weight: 600;
   text-shadow: 1px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.name {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.greeting-form {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.name-input {
-  background-color: inherit;
-  border: none;
-  width: 80%;
-  padding: 10px 5px 10px 10px;
-  line-height: 1.4rem;
-}
-
-.name-input::placeholder {
-  color: white;
-  font-size: 1.3rem;
-  padding: 10px 30px 10px 40px;
-}
-
-.name-input:hover {
-  box-shadow: -4px -4px 10px 0px #fff9, -2px -2px 3px 0px #fff9,
-    4px 4px 10px 0px #0002, 2px 2px 3px 0px #0001;
-}
-
-.name-input:focus {
-  color: white;
-  font-size: 1.1rem;
-  box-shadow: -4px -4px 10px 0px #fff9, -2px -2px 3px 0px #fff9,
-    4px 4px 10px 0px #0002, 2px 2px 3px 0px #0001;
-}
-
-.greetings {
-  padding: 10px;
-  font-size: 2.5rem;
-  display: flex;
-  justify-content: center;
-  font-weight: 700;
-  width: 100%;
-  text-shadow: 1px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
 }
 
 .weather-map {
@@ -139,11 +95,14 @@ main {
   position: fixed;
   top: 5px;
   right: 5px;
+  font-weight: 500;
 }
 .weather {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 
 .location {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
 }
