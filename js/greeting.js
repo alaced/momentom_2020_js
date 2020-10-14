@@ -1,11 +1,16 @@
 const form = document.querySelector(".js-greetingForm"),
   input = form.querySelector(".js-form__name"),
   greeting = document.querySelector(".js-greetings"),
-  focusInput = document.querySelector(".js__todo-focus"),
+  focusInput = document.querySelector(".js-todo-focus"),
   todo = document.querySelector(".todo");
 
 const USER_LS = "currentUser",
   SHOWING_CN = "showing";
+
+function focus() {
+  focusInput.focus();
+  focusInput.select();
+}
 
 function saveName(text) {
   localStorage.setItem(USER_LS, text);
@@ -32,8 +37,7 @@ function paintGreeting(text) {
   greeting.classList.add(SHOWING_CN);
   greeting.innerText = `Hello, ${text}`;
   todo.classList.add(SHOWING_CN);
-  focusInput.focus();
-  focusInput.select();
+  focus();
 }
 
 function loadName() {
@@ -42,8 +46,7 @@ function loadName() {
     askForName();
   } else {
     paintGreeting(currentUser);
-    focusInput.focus();
-    focusInput.select();
+    focus();
   }
 }
 

@@ -11,6 +11,11 @@ const SHOWING_FLEX = "showing-flex";
 let toDos = [];
 let dones = [];
 
+function focus() {
+  focusInput.focus();
+  focusInput.select();
+}
+
 function returnToDos(event) {
   const returnBtn = event.target;
   const div = returnBtn.parentNode;
@@ -22,6 +27,7 @@ function returnToDos(event) {
   dones = moveDones;
   saveDones(dones);
   paintToDo(div.innerText);
+  focus();
 }
 
 function doneToDo(event) {
@@ -35,6 +41,7 @@ function doneToDo(event) {
   toDos = moveToDos;
   saveToDos(toDos);
   paintDone(div.innerText);
+  focus();
 }
 
 function deleteDone(event) {
@@ -46,6 +53,7 @@ function deleteDone(event) {
   });
   dones = cleanDone;
   saveDones(dones);
+  focus();
 }
 
 function deleteToDo(event) {
@@ -57,6 +65,7 @@ function deleteToDo(event) {
   });
   toDos = cleanToDos;
   saveToDos(toDos);
+  focus();
 }
 
 function saveToDos(todo) {
@@ -68,24 +77,19 @@ function saveDones(done) {
 }
 
 function paintDone(text) {
-  const listDiv = document.createElement("div");
+  const genericDiv = buildGenericDiv(text);
   const returnBtn = document.createElement("button");
-  const div = document.createElement("div");
   const delBtn = document.createElement("button");
   const newId = dones.length + 1;
   toDoContainer.classList.add(SHOWING_FLEX);
   returnBtn.addEventListener("click", returnToDos);
   returnBtn.classList.add("fas", "fa-undo-alt");
-  div.classList.add("todo_item");
-  div.innerHTML = text;
   delBtn.classList.add("fas", "fa-times");
   delBtn.addEventListener("click", deleteDone);
-  listDiv.appendChild(returnBtn);
-  listDiv.appendChild(div);
-  listDiv.appendChild(delBtn);
-  listDiv.classList.add("todo_list");
-  listDiv.id = newId;
-  doneList.appendChild(listDiv);
+  genericDiv.prepend(returnBtn);
+  genericDiv.appendChild(delBtn);
+  doneList.appendChild(genericDiv);
+  genericDiv.id = newId;
   const doneObj = {
     text,
     id: newId,
@@ -94,25 +98,30 @@ function paintDone(text) {
   saveDones(dones);
 }
 
-function paintToDo(text) {
+function buildGenericDiv(text) {
   const listDiv = document.createElement("div");
-  const checkBtn = document.createElement("button");
   const div = document.createElement("div");
+  div.classList.add("todo_item");
+  div.innerText = text;
+  listDiv.classList.add("todo_list");
+  listDiv.appendChild(div);
+  return listDiv;
+}
+
+function paintToDo(text) {
+  const genericDiv = buildGenericDiv(text);
+  const checkBtn = document.createElement("button");
   const delBtn = document.createElement("button");
   const newId = toDos.length + 1;
   toDoContainer.classList.add(SHOWING_FLEX);
   checkBtn.classList.add("fas", "fa-check");
   checkBtn.addEventListener("click", doneToDo);
-  div.classList.add("todo_item");
-  div.innerText = text;
   delBtn.classList.add("fas", "fa-times");
   delBtn.addEventListener("click", deleteToDo);
-  listDiv.classList.add("todo_list");
-  listDiv.appendChild(checkBtn);
-  listDiv.appendChild(div);
-  listDiv.appendChild(delBtn);
-  listDiv.id = newId;
-  toDoList.appendChild(listDiv);
+  genericDiv.prepend(checkBtn);
+  genericDiv.appendChild(delBtn);
+  toDoList.appendChild(genericDiv);
+  genericDiv.id = newId;
   const toDoObj = {
     text,
     id: newId,
