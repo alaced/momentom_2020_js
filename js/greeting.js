@@ -18,6 +18,7 @@ function saveName(text) {
 
 function handleSubmit(event) {
   event.preventDefault();
+  if (input.value === "" || input.value === " ") return false;
   const currentValue = input.value;
   paintGreeting(currentValue);
   saveName(currentValue);
