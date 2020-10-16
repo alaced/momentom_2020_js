@@ -19,6 +19,7 @@
   line-height: 1.95rem;
   text-align: center;
   align-items: center;
+  margin-top: 40px;
 }
 
 .name-input[type="text"] {
@@ -53,5 +54,18 @@
   font-weight: 700;
   width: 100%;
   text-align: center;
-  text-shadow: 1px 5px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 5px rgba(0, 0, 0, 0.534);
+  animation: slide-in-fwd-center 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 1.5s;
+}
+
+@keyframes slide-in-fwd-center {
+  0% {
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
 }

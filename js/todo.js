@@ -86,7 +86,7 @@ function paintDone(text) {
   returnBtn.classList.add("fas", "fa-undo-alt");
   delBtn.classList.add("fas", "fa-times");
   delBtn.addEventListener("click", deleteDone);
-  genericDiv.prepend(returnBtn);
+  genericDiv.appendChild(returnBtn);
   genericDiv.appendChild(delBtn);
   doneList.appendChild(genericDiv);
   genericDiv.id = newId;
@@ -101,9 +101,9 @@ function paintDone(text) {
 function buildGenericDiv(text) {
   const listDiv = document.createElement("div");
   const div = document.createElement("div");
-  div.classList.add("todo_item");
+  div.classList.add("todo-item");
   div.innerText = text;
-  listDiv.classList.add("todo_list");
+  listDiv.classList.add("todo-list");
   listDiv.appendChild(div);
   return listDiv;
 }
@@ -118,7 +118,7 @@ function paintToDo(text) {
   checkBtn.addEventListener("click", doneToDo);
   delBtn.classList.add("fas", "fa-times");
   delBtn.addEventListener("click", deleteToDo);
-  genericDiv.prepend(checkBtn);
+  genericDiv.appendChild(checkBtn);
   genericDiv.appendChild(delBtn);
   toDoList.appendChild(genericDiv);
   genericDiv.id = newId;
