@@ -20,35 +20,35 @@
   display: flex;
   align-items: center;
   text-align: start;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 500;
   padding: 3.5px 1px;
   text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),
     1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(48, 21, 13, 0.24);
-  width: 83%;
   word-break: break-all;
+  flex: 1;
 }
 
-.todo .todo-list {
+.todo-list {
   display: flex;
   font-size: 2rem;
-  align-items: flex-start;
+  align-items: center;
   text-align: center;
   padding: 0.2rem 0.5rem;
-  position: relative;
   border-radius: 5px;
   background-color: rgba(194, 193, 193, 0.192);
   margin-bottom: 8px;
   width: 100%;
+  align-items: flex-start;
 }
 
-.done .todo-list {
+.done .todo-item {
   text-decoration-line: line-through;
 }
 
 .toDoList-wrapper,
 .done-wrapper {
-  margin-top: 45px;
+  margin-top: 7px;
   overflow: auto;
   max-height: 23vh;
   width: 100%;
@@ -109,15 +109,12 @@
 
 .todo-column,
 .done-column {
-  margin-bottom: 20px;
   font-size: 1.2rem;
   display: flex;
   justify-content: center;
   padding: 5px;
   border-bottom: 1px solid rgb(202, 201, 201);
   font-weight: 500;
-  position: fixed;
-  width: 25%;
   overflow: hidden;
 }
 
@@ -142,13 +139,9 @@
 
 .fa-times {
   color: rgba(0, 0, 0, 0.644);
-  margin: 1px;
-  padding: 2px;
+  margin: 1px 0px 1px 3px;
+  padding: 2px 0px 2px 2px;
   transition: all 0.15s linear;
-  justify-items: flex-end;
-  position: absolute;
-  right: 6px;
-  top: 6px;
 }
 
 .fa-times:hover {
@@ -158,11 +151,8 @@
 
 .fa-check,
 .fa-undo-alt {
-  margin: 1px;
+  margin: 1px 1px 1px 1.5px;
   padding: 1.5px;
-  position: absolute;
-  right: 25px;
-  top: 6px;
   transition: all 0.15s linear;
   text-shadow: -1px -1px 1px rgba(58, 57, 57, 0.123), 1px 1px 1px #381917,
     2px 2px 2px rgba(48, 21, 13, 0.24);

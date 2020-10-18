@@ -19,7 +19,8 @@
   line-height: 1.95rem;
   text-align: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 105px;
+  border-bottom: 0.3px solid white;
 }
 
 .name-input[type="text"] {
@@ -38,12 +39,14 @@
 .name-input:hover {
   box-shadow: -4px -4px 10px 0px #fff9, -2px -2px 3px 0px #fff9,
     4px 4px 10px 0px #0002, 2px 2px 3px 0px #0001;
+  border: none;
 }
 
 .name-input:focus {
   color: white;
   box-shadow: -4px -4px 10px 0px #fff9, -2px -2px 3px 0px #fff9,
     4px 4px 10px 0px #0002, 2px 2px 3px 0px #0001;
+  border: none;
 }
 
 .greetings {
