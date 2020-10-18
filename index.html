@@ -8,41 +8,49 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
   </head>
   <body>
-    <main>
-      <div class="js-clock clock">
-        <h1 class="js-title">00:00</h1>
-      </div>
-      <div class="name">
-        <form class="js-greetingForm greeting-form">
-          <input
-            type="text"
-            placeholder="What is your name?"
-            class="js-form__name name-input"
-          />
-        </form>
-        <h4 class="js-greetings greetings"></h4>
-      </div>
-      <div class="todo">
-        <form class="js-toDoForm todo-form">
-          <input
-            type="text"
-            placeholder="What is your main focus for today?"
-            class="js-form__todo todo-input js-todo-focus"
-          />
-        </form>
-        <div class="containier-toDoList">
-          <div class="js-toDoList in-progress">
-            <div class="todo-column">In progress</div>
-          </div>
-          <div class="js-doneList done">
-            <div class="todo-column">Done</div>
+    <div class="root">
+      <main>
+        <div class="js-clock clock">
+          <h1 class="js-title">00:00</h1>
+        </div>
+        <div class="name">
+          <form class="js-greetingForm greeting-form">
+            <input
+              type="text"
+              placeholder="What is your name?"
+              class="js-form__name name-input"
+            />
+          </form>
+          <h4 class="js-greetings greetings"></h4>
+        </div>
+        <div class="todo">
+          <form class="js-toDoForm todo-form">
+            <input
+              type="text"
+              placeholder="What is your main focus for today?"
+              class="js-form__todo todo-input js-todo-focus"
+            />
+          </form>
+          <div class="containier-toDoList">
+            <div class="in-progress">
+              <div class="todo-column">In progress</div>
+              <div class="toDoList-wrapper">
+                <div class="js-toDoList"></div>
+              </div>
+            </div>
+            <div class="done">
+              <div class="done-column">Done</div>
+              <div class="done-wrapper">
+                <div class="js-doneList"></div>
+              </div>
+            </div>
           </div>
         </div>
+      </main>
+      <div class="weather-map">
+        <div class="js-weather weather"></div>
+        <div class="js-location location"></div>
       </div>
-    </main>
-    <div class="weather-map">
-      <div class="js-weather weather"></div>
-      <div class="js-location location"></div>
     </div>
     <script
       src="https://kit.fontawesome.com/841cfaa0da.js"
