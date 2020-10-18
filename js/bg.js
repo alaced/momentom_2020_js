@@ -1,14 +1,13 @@
-const body = document.querySelector("body");
+const root = document.querySelector(".root");
 
 const IMG_NUMBER = 3;
 
 function handleImgLoad() {}
 
 function paintImage(imgNumber) {
-  const image = new Image();
-  image.src = `images/${imgNumber}.jpg`;
-  image.classList.add("bgImage");
-  body.appendChild(image);
+  const image = `images/${imgNumber}.jpg`;
+  root.style.backgroundImage = `url(${image})`;
+  root.classList.add("bgImage");
 }
 
 function genRandom() {

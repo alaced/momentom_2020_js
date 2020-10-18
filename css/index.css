@@ -8,10 +8,11 @@
 }
 
 body {
-  background-color: #90a4aa;
+  background-color: #5c767d;
   font-family: "Epilogue", sans-serif;
   height: 100vh;
   color: white;
+  z-index: 1;
 }
 
 button {
@@ -75,7 +76,27 @@ main {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  /* #000d */
+  position: relative;
+  z-index: 10;
+  max-height: auto;
+}
+
+.root {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  z-index: 2;
+}
+
+.root:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.041);
 }
 
 .clock {

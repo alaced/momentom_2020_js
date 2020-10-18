@@ -20,7 +20,7 @@ function returnToDos(event) {
   const returnBtn = event.target;
   const div = returnBtn.parentNode;
   doneList.removeChild(div);
-  let newId = parseInt(div.id);
+  let newId = div.id;
   const moveDones = dones.filter(function (done) {
     return done.id !== newId;
   });
@@ -33,7 +33,7 @@ function returnToDos(event) {
 function doneToDo(event) {
   const checkBtn = event.target;
   const div = checkBtn.parentNode;
-  let newId = parseInt(div.id);
+  let newId = div.id;
   toDoList.removeChild(div);
   const moveToDos = toDos.filter(function (toDo) {
     return toDo.id !== newId;
@@ -49,11 +49,12 @@ function deleteDone(event) {
   const div = delBtn.parentNode;
   doneList.removeChild(div);
   const cleanDone = dones.filter(function (done) {
-    return done.id !== parseInt(div.id);
+    return done.id !== div.id;
   });
   dones = cleanDone;
   saveDones(dones);
   focus();
+  clear();
 }
 
 function deleteToDo(event) {
@@ -61,11 +62,12 @@ function deleteToDo(event) {
   const div = delBtn.parentNode;
   toDoList.removeChild(div);
   const cleanToDos = toDos.filter(function (toDo) {
-    return toDo.id !== parseInt(div.id);
+    return toDo.id !== div.id;
   });
   toDos = cleanToDos;
   saveToDos(toDos);
   focus();
+  clear();
 }
 
 function saveToDos(todo) {
@@ -89,10 +91,10 @@ function paintDone(text) {
   genericDiv.appendChild(returnBtn);
   genericDiv.appendChild(delBtn);
   doneList.appendChild(genericDiv);
-  genericDiv.id = newId;
+  genericDiv.id = `id_${newId}`;
   const doneObj = {
     text,
-    id: newId,
+    id: `id_${newId}`,
   };
   dones.push(doneObj);
   saveDones(dones);
@@ -121,10 +123,10 @@ function paintToDo(text) {
   genericDiv.appendChild(checkBtn);
   genericDiv.appendChild(delBtn);
   toDoList.appendChild(genericDiv);
-  genericDiv.id = newId;
+  genericDiv.id = `id_${newId}`;
   const toDoObj = {
     text,
-    id: newId,
+    id: `id_${newId}`,
   };
   toDos.push(toDoObj);
   saveToDos(toDos);
@@ -152,6 +154,12 @@ function loadToDos() {
     parsedDones.forEach(function (done) {
       paintDone(done.text);
     });
+  }
+}
+
+function clear() {
+  if (toDoList.childNodes.length === 0 && doneList.childNodes.length === 0) {
+    toDoContainer.classList.remove(SHOWING_FLEX);
   }
 }
 
