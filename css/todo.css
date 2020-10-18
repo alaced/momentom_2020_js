@@ -1,6 +1,7 @@
 .containier-toDoList {
   justify-content: space-between;
   width: 100%;
+  column-gap: 7px;
 }
 
 .todo {
@@ -134,7 +135,7 @@
 }
 
 .in-progress {
-  box-shadow: 5px 5px 17px 0px rgb(63, 60, 63);
+  box-shadow: 4px 5px 15px 0px rgb(63, 60, 63);
 }
 
 .fa-times {
